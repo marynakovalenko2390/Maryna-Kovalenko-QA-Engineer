@@ -1,0 +1,4932 @@
+{
+	"info": {
+		"_postman_id": "38324aa9-aef7-4a1f-9a26-00ba7c633bdf",
+		"name": "Postman Practice [Maryna Kovalenko]",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32304064",
+		"_collection_link": "https://www.postman.com/marysiakovalenko2390/workspace/postman-practice-maryna-kovalenko/collection/32304064-38324aa9-aef7-4a1f-9a26-00ba7c633bdf?action=share&source=collection_link&creator=32304064"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Successful sign in",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"  \r",
+									"}\r",
+									"\r",
+									"pm.test(\"Assert JSON contains properties: username, email, token, bio, image\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.user).to.have.property(\"username\");\r",
+									"  pm.expect(res.user).to.have.property(\"email\");\r",
+									"  pm.expect(res.user).to.have.property(\"token\");\r",
+									"  pm.expect(res.user).to.have.property(\"bio\");\r",
+									"  pm.expect(res.user).to.have.property(\"image\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									" \r",
+									"}\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n  \"user\": {\r\n        \"email\": \"{{email}}\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n }\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users/login",
+							"host": [
+								"{{BASE_URL}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in with non-existing credential",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"  \r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email or password\"]).to.eql(\"is invalid\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									" \r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n  \"user\": {\r\n    \"email\": \"any4etrtr@qmail.com\",\r\n    \"password\": \"W@lterWh1te23387\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users/login",
+							"host": [
+								"{{BASE_URL}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in with empty email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"   \r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email\"]).to.eql(\"can't be blank\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									" \r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n  \"user\": {\r\n    \"email\":\"\", \r\n    \"password\":\"{{passwordConduit}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users/login",
+							"host": [
+								"{{BASE_URL}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in with empty password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"password\"]).to.eql(\"can't be blank\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n  \"user\": {\r\n    \"email\":\"{{email}}\", \r\n    \"password\":\"\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users/login",
+							"host": [
+								"{{BASE_URL}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Successful sign up",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"  }\r",
+									"\r",
+									"\r",
+									"pm.test('Assert JSON contain properties: username, email, token, bio, image', () => {\r",
+									"  pm.response.to.have.jsonBody('user.username')\r",
+									"    .and.to.have.jsonBody('user.email')\r",
+									"    .and.to.have.jsonBody('user.token')\r",
+									"    .and.to.have.jsonBody('user.bio')\r",
+									"    .and.to.have.jsonBody('user.image')\r",
+									"    \r",
+									"});\r",
+									"pm.test('Assert response contains empty bio', function () {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.user.bio).to.eql(null);\r",
+									"});\r",
+									"\r",
+									"pm.test('Assert response contains empty image', function () {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.user.image)\r",
+									"    .to.eql(null);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									" }\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{passwordConduit}}\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with taken username",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"username\"]).to.eql([\"This username is taken.\"]);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{username}}\",\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with taken email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email\"]).to.eql([\"This email is taken.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{$randomUserName}}\",\r\n        \"email\": \"{{email}}\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with username starting from number",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"username\"]).to.eql([\"Username must start with a letter, have no spaces, and be 2 - 40 characters.\"]);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"12narymah\",\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with username with 41 symbols",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomString(length) {\r",
+									"    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * chars.length);\r",
+									"        result += chars[randomIndex];\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"const randomUserName = generateRandomString(41); \r",
+									"\r",
+									"pm.collectionVariables.set(\"randomUserName\", randomUserName);\r",
+									"\r",
+									"console.log(\"Generated random username:\", randomUserName);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"username\"]).to.eql([\"Username must start with a letter, have no spaces, and be 2 - 40 characters.\"]);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{randomUserName}}\",\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with username with spaces",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from collection function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in collection\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"username\"]).to.eql([\"Username must start with a letter, have no spaces, and be 2 - 40 characters.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"rvuph kkmnx\",\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with empty username",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"username\"]).to.eql([\"Username must start with a letter, have no spaces, and be 2 - 40 characters.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"\",\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with empty email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomString(length) {\r",
+									"    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * chars.length);\r",
+									"        result += chars[randomIndex];\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"const randomUserName_1 = generateRandomString(10); \r",
+									"\r",
+									"pm.collectionVariables.set(\"randomUserName_1\", randomUserName_1);\r",
+									"\r",
+									"console.log(\"Generated random username:\", randomUserName_1);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email\"]).to.eql([\"This email does not seem valid.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{randomUserName_1}}\",\r\n        \"email\": \"\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with email without @",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomString(length) {\r",
+									"    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * chars.length);\r",
+									"        result += chars[randomIndex];\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"const randomUserName_1 = generateRandomString(10); \r",
+									"\r",
+									"pm.collectionVariables.set(\"randomUserName_1\", randomUserName_1);\r",
+									"\r",
+									"console.log(\"Generated random username:\", randomUserName_1);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email\"]).to.eql([\"This email does not seem valid.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{randomUserName_1}}\",\r\n        \"email\": \"qwe44tryugmail.com\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with email without .",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomString(length) {\r",
+									"    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * chars.length);\r",
+									"        result += chars[randomIndex];\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"const randomUserName_1 = generateRandomString(10); \r",
+									"\r",
+									"pm.collectionVariables.set(\"randomUserName_1\", randomUserName_1);\r",
+									"\r",
+									"console.log(\"Generated random username:\", randomUserName_1);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email\"]).to.eql([\"This email does not seem valid.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{randomUserName_1}}\",\r\n        \"email\": \"qwe44tryuwe@gmailcom\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with email without name part",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomString(length) {\r",
+									"    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * chars.length);\r",
+									"        result += chars[randomIndex];\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"const randomUserName_1 = generateRandomString(10); \r",
+									"\r",
+									"pm.collectionVariables.set(\"randomUserName_1\", randomUserName_1);\r",
+									"\r",
+									"console.log(\"Generated random username:\", randomUserName_1);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email\"]).to.eql([\"This email does not seem valid.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{randomUserName_1}}\",\r\n        \"email\": \"@gmailcom\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with email with more than 254 symbols",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomString(length) {\r",
+									"    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * chars.length);\r",
+									"        result += chars[randomIndex];\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"const randomUserName_1 = generateRandomString(10); \r",
+									"\r",
+									"pm.collectionVariables.set(\"randomUserName_1\", randomUserName_1);\r",
+									"\r",
+									"console.log(\"Generated random username:\", randomUserName_1);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"email\"]).to.eql([\"This email does not seem valid.\"]);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{randomUserName_1}}\",\r\n        \"email\": \"edijrirrffnxmuhzermbqbjahyraictxikmnnvikdgjrahggjemtfqrpvimhrvbyzhdjaxynfpreugxtvjdnrjbvbhegatmpnqhthcheemiugnbcmhrippbwjjveahvzpyzfcybicquchcwjcpjbhqiyuxuejreqxdxdzwyebfvwvaagwfpivdwwhnnggvzzfecnvzgudpbeaptgiqzjgcqmrjtiebqmqbriezntkjyyirzcvribizuiwmjitr@gmail.com\",\r\n        \"password\": \"{{passwordConduit}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up with empty password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"function generateRandomString(length) {\r",
+									"    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        const randomIndex = Math.floor(Math.random() * chars.length);\r",
+									"        result += chars[randomIndex];\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"const randomUserName_1 = generateRandomString(10); \r",
+									"\r",
+									"pm.collectionVariables.set(\"randomUserName_1\", randomUserName_1);\r",
+									"\r",
+									"console.log(\"Generated random username:\", randomUserName_1);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(422); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Check validation message\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.errors[\"password\"]).to.eql(\"can't be blank\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.globals.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n {\r\n    \"user\": {\r\n        \"username\": \"{{randomUserName_1}}\",\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"password\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}users",
+							"host": [
+								"{{BASE_URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get info about user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Assert JSON contains properties: username, email, token, bio, image\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.user).to.have.property(\"username\");\r",
+									"  pm.expect(res.user).to.have.property(\"email\");\r",
+									"  pm.expect(res.user).to.have.property(\"token\");\r",
+									"  pm.expect(res.user).to.have.property(\"bio\");\r",
+									"  pm.expect(res.user).to.have.property(\"image\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}user",
+							"host": [
+								"{{BASE_URL}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update info about user: image",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"pm.test(\"Assert JSON contains properties: username, email, token, bio, image\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.user).to.have.property(\"username\");\r",
+									"  pm.expect(res.user).to.have.property(\"email\");\r",
+									"  pm.expect(res.user).to.have.property(\"token\");\r",
+									"  pm.expect(res.user).to.have.property(\"bio\");\r",
+									"  pm.expect(res.user).to.have.property(\"image\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"username\": \"{{username}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"token\": \"{{token}}\",\r\n    \"bio\": null,\r\n    \"image\": \"https://drive.google.com/file/d/1jIAOF5KzAzMC_7x3-DBdXPwiJ5PGUg4f/view?usp=sharing\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}user",
+							"host": [
+								"{{BASE_URL}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update info about user: bio",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"pm.test(\"Assert JSON contains properties: username, email, token, bio, image\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.user).to.have.property(\"username\");\r",
+									"  pm.expect(res.user).to.have.property(\"email\");\r",
+									"  pm.expect(res.user).to.have.property(\"token\");\r",
+									"  pm.expect(res.user).to.have.property(\"bio\");\r",
+									"  pm.expect(res.user).to.have.property(\"image\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"username\": \"{{username}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"token\": \"{{vault:json-web-token}}\",\r\n    \"bio\": \"I am a QA\",\r\n    \"image\": \"https://drive.google.com/file/d/1jIAOF5KzAzMC_7x3-DBdXPwiJ5PGUg4f/view?usp=sharing\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}user",
+							"host": [
+								"{{BASE_URL}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update info about user: username",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Assert JSON contains properties: username, email, token, bio, image\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.user).to.have.property(\"username\");\r",
+									"  pm.expect(res.user).to.have.property(\"email\");\r",
+									"  pm.expect(res.user).to.have.property(\"token\");\r",
+									"  pm.expect(res.user).to.have.property(\"bio\");\r",
+									"  pm.expect(res.user).to.have.property(\"image\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"username\": \"{{username}}wer\",\r\n    \"email\": \"{{email}}\",\r\n    \"token\": \"{{vault:json-web-token}}\",\r\n    \"bio\": \"I am a QA\",\r\n    \"image\": \"https://drive.google.com/file/d/1jIAOF5KzAzMC_7x3-DBdXPwiJ5PGUg4f/view?usp=sharing\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}user",
+							"host": [
+								"{{BASE_URL}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update info about user: email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Assert JSON contains properties: username, email, token, bio, image\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.user).to.have.property(\"username\");\r",
+									"  pm.expect(res.user).to.have.property(\"email\");\r",
+									"  pm.expect(res.user).to.have.property(\"token\");\r",
+									"  pm.expect(res.user).to.have.property(\"bio\");\r",
+									"  pm.expect(res.user).to.have.property(\"image\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"username\": \"{{username}}\",\r\n    \"email\": \"qwe{{email}}\",\r\n    \"token\": \"{{vault:json-web-token}}\",\r\n    \"bio\": \"I am a QA\",\r\n    \"image\": \"https://drive.google.com/file/d/1jIAOF5KzAzMC_7x3-DBdXPwiJ5PGUg4f/view?usp=sharing\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}user",
+							"host": [
+								"{{BASE_URL}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update info about user: password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Assert JSON contains properties: username, email, token, bio, image\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.user).to.have.property(\"username\");\r",
+									"  pm.expect(res.user).to.have.property(\"email\");\r",
+									"  pm.expect(res.user).to.have.property(\"token\");\r",
+									"  pm.expect(res.user).to.have.property(\"bio\");\r",
+									"  pm.expect(res.user).to.have.property(\"image\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newPassword\": \"Pass3408!Aaa2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}user",
+							"host": [
+								"{{BASE_URL}}user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update info about user without authorization",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(401); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"} \r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"  pm.response.to.have.status(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"username\": \"ttyuy44kov\",\r\n    \"email\": \"ghfhuiio233534kova@org.net\",\r\n    \"token\": \"{{vault:json-web-token}}\",\r\n    \"bio\": \"I am a QA\",\r\n    \"image\": \"https://drive.google.com/file/d/1jIAOF5KzAzMC_7x3-DBdXPwiJ5PGUg4f/view?usp=sharing\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}user",
+							"host": [
+								"{{BASE_URL}}user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Articles",
+			"item": [
+				{
+					"name": "Create an article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const articleTitle = `Article ${Math.floor(Math.random() * 100)}` ;\r",
+									"const articleDescription = `Description ${Math.floor(Math.random() * 100)}`; \r",
+									"const articleBody =  `Random body ${Math.floor(Math.random() * 1000)}`;\r",
+									"pm.collectionVariables.set(\"article_title\", articleTitle);\r",
+									"pm.collectionVariables.set(\"article_description\", articleDescription);\r",
+									"pm.collectionVariables.set(\"article_body\", articleBody);\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"}\r",
+									"\r",
+									"pm.test(\"correctArticleTitle\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const expectTitle = pm.collectionVariables.get(\"article_title\")\r",
+									"    pm.expect(jsonData.article.title).to.eql(expectTitle);\r",
+									"});\r",
+									"pm.test(\"correctArticleDescription\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const expectDescription = pm.collectionVariables.get(\"article_description\")\r",
+									"    pm.expect(jsonData.article.description).to.eql(expectDescription);\r",
+									"});\r",
+									"pm.test(\"correctArticleBody\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const expectBody = pm.collectionVariables.get(\"article_body\")\r",
+									"    pm.expect(jsonData.article.body).to.eql(expectBody);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"article\": {\r\n    \"title\": \"{{article_title}}\", \r\n    \"description\": \"{{article_description}}\", \r\n    \"body\": \"{{article_body}}\" , \r\n    \"tagList\": []\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles",
+							"host": [
+								"{{BASE_URL}}articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"const createArticlefn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from globals\");\r",
+									"\r",
+									" \r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — creating article in 2s...\");\r",
+									"  setTimeout(() => createArticle(), 2000);\r",
+									"});\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Check Favorited is false\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.article.favorited).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.globals.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"article\": {\r\n    \"title\": \"{{article_title}}\", \r\n    \"description\": \"{{article_description}}\", \r\n    \"body\": \"{{article_body}}\" , \r\n    \"tagList\": []\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from collection\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in collection\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									"\r",
+									"//Create article\r",
+									"\r",
+									"const createArticlefn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from collection\");\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — creating article in 2s...\");\r",
+									"  setTimeout(() => createArticle(), 2000);\r",
+									"});\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(204); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"            \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from collection\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in collection\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"const createArticlefn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from collection\");\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — creating article in 2s...\");\r",
+									"  setTimeout(() => createArticle(), 2000);\r",
+									"});\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Assert JSON contains properties: slug, title,description,body\", () => {\r",
+									"  const res = pm.response.json();\r",
+									"\r",
+									"  pm.expect(res.article).to.have.property(\"slug\");\r",
+									"  pm.expect(res.article).to.have.property(\"title\");\r",
+									"  pm.expect(res.article).to.have.property(\"description\");\r",
+									"  pm.expect(res.article).to.have.property(\"body\");\r",
+									"  pm.expect(res.article).to.have.property(\"createdAt\");\r",
+									"  pm.expect(res.article).to.have.property(\"updatedAt\");\r",
+									"  pm.expect(res.article).to.have.property(\"tagList\");\r",
+									"  pm.expect(res.article).to.have.property(\"favorited\");\r",
+									"  pm.expect(res.article).to.have.property (\"favoritesCount\");\r",
+									"  pm.expect(res.article).to.have.property(\"createdAt\");\r",
+									"  pm.expect(res.article).to.have.property(\"createdAt\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"            \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get articles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Article contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  \r",
+									"  if (jsonData.article) {\r",
+									"    pm.expect(jsonData.article).to.have.property(\"slug\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"title\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"description\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"body\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"createdAt\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"updatedAt\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"tagList\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"favorited\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"favoritesCount\");\r",
+									"  } else {\r",
+									"    console.warn(\"No article object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"            \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles",
+							"host": [
+								"{{BASE_URL}}articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get articles from Your feed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"pm.test(\"Article contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.articles).to.be.an(\"array\").that.has.lengthOf(1);\r",
+									"  \r",
+									"  if (jsonData.articles) {\r",
+									"  \r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"slug\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"title\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"description\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"body\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"createdAt\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"updatedAt\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"tagList\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"favorited\");\r",
+									"    pm.expect(jsonData.articles[0]).to.have.property(\"favoritesCount\");\r",
+									"  } else {\r",
+									"    console.warn(\"No article object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.globals.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"            \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//==== Load registration for First User ====//\r",
+									"\r",
+									"const regFn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (regFn) {\r",
+									"  eval(`var registrationRequest = ${regFn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from collection\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in collection\");\r",
+									"}\r",
+									"\r",
+									"//==== Load registration for Second User ====//\r",
+									"\r",
+									"const regSecondFn = pm.collectionVariables.get(\"registrationRequestSecondFn\");\r",
+									"if (regSecondFn) {\r",
+									"  eval(`var registrationRequestSecond = ${regSecondFn}`);\r",
+									"  console.log(\"✅ registrationRequestSecond loaded from collection\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestSecondFn not found in collection\");\r",
+									"}\r",
+									"\r",
+									"//==== Create Article by Second User ====//\r",
+									"\r",
+									"const createArticleSecondUserfn = pm.collectionVariables.get(\"createArticleSecondUserFn\");\r",
+									"if (createArticleSecondUserfn) {\r",
+									"  eval(`var createArticleSecondUser = ${createArticleSecondUserfn}`);\r",
+									"  console.log(\"createArticleSecondUser loaded from collection\");\r",
+									"\r",
+									"//==== Follow Second User by First ====//\r",
+									"\r",
+									"const followSecondUserFn = pm.collectionVariables.get(\"followSecondUserFn\");\r",
+									"\r",
+									"if (followSecondUserFn) {\r",
+									"  eval(`var followSecondUser = ${followSecondUserFn}`);\r",
+									"  console.log(\"✅ FollowSecondUserFn loaded from collection\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"//==== Create Comment ====//\r",
+									"\r",
+									"const createCommentfn = pm.collectionVariables.get(\"createCommentFn\");\r",
+									"  if (createCommentfn) {\r",
+									"    eval(`var createComment = ${createCommentfn}`);\r",
+									"    console.log(\"createComment loaded from collection\");\r",
+									"  }\r",
+									"\r",
+									"\r",
+									"//==== Set Timeout ====//\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"✅ First user registered\");\r",
+									"\r",
+									"  setTimeout(() => {\r",
+									"    registrationRequestSecond(() => {\r",
+									"      console.log(\"✅ Second user registered\");\r",
+									"\r",
+									"      setTimeout(() => {\r",
+									"        createArticleSecondUser(() => {\r",
+									"          console.log(\"✅ Article created by Second user\");\r",
+									"\r",
+									"          setTimeout(() => {\r",
+									"            followSecondUser(() => {\r",
+									"              console.log(\"✅ First user followed Second user\");\r",
+									"\r",
+									"              setTimeout(() => {\r",
+									"                createComment();\r",
+									"              }, 3000);\r",
+									"            });\r",
+									"          }, 3000);\r",
+									"        });\r",
+									"      }, 3000);\r",
+									"    });\r",
+									"  }, 3000);\r",
+									"});\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/feed?limit=10&offset=0",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"feed"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get articles from Global feed",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from collection\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in collection\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Article contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  \r",
+									"  if (jsonData.article) {\r",
+									"    pm.expect(jsonData.article).to.have.property(\"slug\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"title\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"description\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"body\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"createdAt\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"updatedAt\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"tagList\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"favorited\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"favoritesCount\");\r",
+									"  } else {\r",
+									"    console.warn(\"No article object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in collection\");\r",
+									"}\r",
+									"            \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles?limit=10&offset=0",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get articles by tag",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// ===Registration===//\r",
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"// ===Create Article===//\r",
+									"\r",
+									"const createArticlefn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from collection\");\r",
+									"\r",
+									"  \r",
+									"\r",
+									"// ===Set Timeout===//\r",
+									"\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  setTimeout(createArticle, 3500); \r",
+									"});\r",
+									"setTimeout(createArticle, 2500);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"pm.test(\"Article contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  \r",
+									"  if (jsonData.article) {\r",
+									"    pm.expect(jsonData.article).to.have.property(\"slug\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"title\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"description\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"body\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"createdAt\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"updatedAt\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"tagList\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"favorited\");\r",
+									"    pm.expect(jsonData.article).to.have.property(\"favoritesCount\");\r",
+									"  } else {\r",
+									"    console.warn(\"No article object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in collection\");\r",
+									"}\r",
+									"       \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles?limit=10&tag=:tag:&offset=0&tag={{article_tag}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "tag",
+									"value": ":tag:"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "tag",
+									"value": "{{article_tag}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create an article without authorization",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// ===Create Article===//\r",
+									"\r",
+									"const createArticlefn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from globals\");\r",
+									"\r",
+									"  createArticle(() => {\r",
+									"    console.log(\" Article created and callback finished.\");\r",
+									"  });\r",
+									"} else {\r",
+									"  console.error(\"❌ createArticleFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"  eval(`var checkStatusCode = ${fn}`);\r",
+									"  checkStatusCode(401);\r",
+									" \r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"  pm.expect(pm.response.text()).to.include(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400);\r",
+									"}\r",
+									"\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"article\": {\r\n    \"title\": \"{{article_title}}\", \r\n    \"description\": \"{{article_description}}\", \r\n    \"body\": \"{{article_body}}\" , \r\n    \"tagList\": []\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles",
+							"host": [
+								"{{BASE_URL}}articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an article without authorization",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// ===Create Article===//\r",
+									"\r",
+									"const createArticlefn = pm.globals.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from globals\");\r",
+									"\r",
+									"  createArticle(() => {\r",
+									"    console.log(\" Article created and callback finished.\");\r",
+									"  });\r",
+									"} else {\r",
+									"  console.error(\"❌ createArticleFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									" \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(401); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"  pm.expect(pm.response.text()).to.include(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.globals.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"            \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an article of another user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//=====Registration====//\r",
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//=====Registration Second User====//\r",
+									"const registrationRequestSecondfn = pm.globals.get(\"registrationRequestSecondFn\");\r",
+									"if (registrationRequestSecondfn) {\r",
+									"  eval(`var registrationRequestSecond = ${registrationRequestSecondfn}`);\r",
+									"  console.log(\"✅ registrationRequestSecond loaded from globals\");\r",
+									"\r",
+									"}\r",
+									"\r",
+									"//=====Create Article by second====//\r",
+									"function createArticle() {\r",
+									"  const BASE_URL = pm.collectionVariables.get(\"BASE_URL\");\r",
+									"  const url = `${BASE_URL}articles`;\r",
+									"  const token = pm.collectionVariables.get('tokenSecond');\r",
+									"\r",
+									"  console.log(\"Using Second token:\", token);\r",
+									"\r",
+									"  const title = `Article ${Math.floor(Math.random() * 100)}`;\r",
+									"  const description = `Description ${Math.floor(Math.random() * 100)}`;\r",
+									"  const body = `Random body ${Math.floor(Math.random() * 1000)}`;\r",
+									"  const tagList = [];\r",
+									"\r",
+									"  pm.collectionVariables.set(\"article_title\", title);\r",
+									"  pm.collectionVariables.set(\"article_description\", description);\r",
+									"  pm.collectionVariables.set(\"article_body\", body);\r",
+									"\r",
+									"  const requestStructure = {\r",
+									"    url,\r",
+									"    method: 'POST',\r",
+									"    header: [\r",
+									"      { key: 'Content-Type', value: 'application/json' },\r",
+									"      { key: 'Authorization', value: `Token ${token}` }\r",
+									"    ],\r",
+									"    body: {\r",
+									"      mode: 'raw',\r",
+									"      raw: JSON.stringify({ article: { title, description, body, tagList } })\r",
+									"    }\r",
+									"  };\r",
+									"\r",
+									"  pm.sendRequest(requestStructure, (error, response) => {\r",
+									"    if (error) {\r",
+									"      console.error(\"createArticle error:\", error);\r",
+									"      return;\r",
+									"    }\r",
+									"\r",
+									"    const text = response.text();\r",
+									"    console.log(\"Raw createArticle response:\", text);\r",
+									"\r",
+									"    try {\r",
+									"      const resJson = JSON.parse(text);\r",
+									"      console.log(\"createArticle response:\", resJson);\r",
+									"\r",
+									"      if (resJson.article && resJson.article.slug) {\r",
+									"        pm.collectionVariables.set(\"article_slug\", resJson.article.slug);\r",
+									"        console.log(\"Article created:\", resJson.article.slug);\r",
+									"      }\r",
+									"    } catch (err) {\r",
+									"      console.error(\"createArticle parse error:\", err.message, text);\r",
+									"    }\r",
+									"  });\r",
+									"}\r",
+									"registrationRequestSecond(() => {\r",
+									"  setTimeout(createArticle, 2500);\r",
+									"})\r",
+									"setTimeout(createArticle, 2500);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(403); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"  pm.expect(pm.response.text()).to.include(\"Forbidden\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.globals.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"}\r",
+									"\r",
+									"            \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{tokenFirst}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete non-existing article",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(404); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Not Found string\", function () {\r",
+									"  pm.expect(pm.response.text()).to.include(\"Not Found\");\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.globals.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"        \r",
+									"              \r",
+									"      \r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug1}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug1}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get info about the profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"}\r",
+									"\r",
+									"pm.test('Assert JSON contain properties: username, bio, image, following', () => {\r",
+									"  pm.response.to.have.jsonBody('profile.username')\r",
+									"    .and.to.have.jsonBody('profile.bio')\r",
+									"    .and.to.have.jsonBody('profile.image')\r",
+									"    .and.to.have.jsonBody('profile.following')\r",
+									"    \r",
+									"});\r",
+									"pm.test('Assert response contains empty bio', function () {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.profile.bio).to.eql(null);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}profiles/{{username}}",
+							"host": [
+								"{{BASE_URL}}profiles"
+							],
+							"path": [
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow the user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//====Registration===//\r",
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"//====Registration Second User===//\r",
+									"\r",
+									"const registrationRequestSecondfn = pm.collectionVariables.get(\"registrationRequestSecondFn\");\r",
+									"if (registrationRequestSecondfn) {\r",
+									"  eval(`var registrationRequestSecond = ${registrationRequestSecondfn}`);\r",
+									"  console.log(\"✅ registrationRequestSecond loaded from globals\");\r",
+									"\r",
+									"}\r",
+									"\r",
+									"//====Set Timeout===//\r",
+									"\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  setTimeout(() => {\r",
+									"      setTimeout(registrationRequestSecond, 5000);\r",
+									"    });\r",
+									"  }, 3000);\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Profile contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  \r",
+									"  if (jsonData.profile) {\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"username\");\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"bio\");\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"image\");\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"following\");\r",
+									"  } else {\r",
+									"    console.warn(\"No profile object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}profiles/{{usernameSecond}}/follow",
+							"host": [
+								"{{BASE_URL}}profiles"
+							],
+							"path": [
+								"{{usernameSecond}}",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow the user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//====Registration===//\r",
+									"const fn = pm.globals.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from globals\");\r",
+									"} else {\r",
+									"  console.error(\"❌ registrationRequestFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//====Registration Second User===//\r",
+									"\r",
+									"const registrationRequestSecondfn = pm.globals.get(\"registrationRequestSecondFn\");\r",
+									"if (registrationRequestSecondfn) {\r",
+									"  eval(`var registrationRequestSecond = ${registrationRequestSecondfn}`);\r",
+									"  console.log(\"✅ registrationRequestSecond loaded from globals\");\r",
+									"\r",
+									"}\r",
+									"\r",
+									"//====Set Timeout===//\r",
+									"\r",
+									"registrationRequestSecond(() => {\r",
+									"  setTimeout(() => {\r",
+									"      setTimeout(followSecondUsers, 5000);\r",
+									"    });\r",
+									"  }, 3000);\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Profile contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  \r",
+									"  if (jsonData.profile) {\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"username\");\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"bio\");\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"image\");\r",
+									"    pm.expect(jsonData.profile).to.have.property(\"following\");\r",
+									"  } else {\r",
+									"    console.warn(\"No profile object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}profiles/{{usernameSecond}}/follow",
+							"host": [
+								"{{BASE_URL}}profiles"
+							],
+							"path": [
+								"{{usernameSecond}}",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Get tags",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.globals.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{tokenFirst}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}tags",
+							"host": [
+								"{{BASE_URL}}tags"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get comments",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//====Registration=====//\r",
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"}\r",
+									"\r",
+									"//====Create Article=====//\r",
+									"\r",
+									"const createArticlefn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from collection\");\r",
+									"\r",
+									"  //====Create Comment=====//\r",
+									"\r",
+									"  const createCommentfn = pm.collectionVariables.get(\"createCommentFn\");\r",
+									"  if (createCommentfn) {\r",
+									"    eval(`var createComment = ${createCommentfn}`);\r",
+									"    console.log(\"createComment loaded from collection\");\r",
+									"\r",
+									"\r",
+									"    //====setTimeout=====//\r",
+									"\r",
+									"\r",
+									"    createArticle(() => {\r",
+									"      setTimeout(() => {\r",
+									"        setTimeout(createComment, 5000);\r",
+									"      });\r",
+									"    }, 3000)\r",
+									"  }\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response contains comment with id, body, createdAt\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"\r",
+									"  const firstComment = jsonData.comments[0];\r",
+									"  pm.expect(firstComment).to.have.property(\"id\");\r",
+									"  pm.expect(firstComment).to.have.property(\"body\");\r",
+									"  pm.expect(firstComment).to.have.property(\"createdAt\");\r",
+									"  pm.expect(firstComment).to.have.property(\"updatedAt\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(400); \r",
+									"\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}/comments",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post a comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(200); \r",
+									"}\r",
+									"\r",
+									"pm.test(\"Comments contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  \r",
+									"  if (jsonData.article) {\r",
+									"    pm.expect(jsonData.comment).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData.comment).to.have.property(\"body\");\r",
+									"    pm.expect(jsonData.comment).to.have.property(\"createdAt\");\r",
+									"    pm.expect(jsonData.comment).to.have.property(\"updatedAt\");\r",
+									"   } else {\r",
+									"    console.warn(\"No comments object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"pm.test(\"Author contains required fields\", () => {\r",
+									"  const jsonData = pm.response.json();\r",
+									"  \r",
+									"  if (jsonData.article) {\r",
+									"    pm.expect(jsonData.author).to.have.property(\"username\");\r",
+									"    pm.expect(jsonData.author).to.have.property(\"bio\");\r",
+									"    pm.expect(jsonData.author).to.have.property(\"image\");\r",
+									"    pm.expect(jsonData.author).to.have.property(\"following\");\r",
+									"   } else {\r",
+									"    console.warn(\"No author object found in response:\", jsonData);\r",
+									"  }\r",
+									"});\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(600); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//====Registration====//\r",
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"}\r",
+									"\r",
+									"//====Create Article====//\r",
+									"\r",
+									"const createArticlefn = pm.globals.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from globals\");\r",
+									"\r",
+									"}\r",
+									"\r",
+									"\r",
+									"const body = `MyComments1 ${Math.floor(Math.random() * 100)}`;\r",
+									"pm.collectionVariables.set(\"commentBody\", body);\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"comment\":{\r\n    \"body\": \"{{commentBody}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}/comments",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ Registration loaded from collection\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"//====Create Article====//\r",
+									"\r",
+									"const createArticleFn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticleFn) {\r",
+									"  eval(`var createArticle = ${createArticleFn}`);\r",
+									"  console.log(\"✅ createArticle loaded from collection\");\r",
+									"}\r",
+									"\r",
+									"createArticle(() => {\r",
+									"  console.log(\"Article creation done, slug:\", pm.collectionVariables.get(\"article_slug\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//====Create Comment=====//\r",
+									"\r",
+									"  const createCommentfn = pm.collectionVariables.get(\"createCommentFn\");\r",
+									"  if (createCommentfn) {\r",
+									"    eval(`var createComment = ${createCommentfn}`);\r",
+									"    console.log(\"createComment loaded from collection\");\r",
+									"  }\r",
+									"\r",
+									"    //====setTimeout=====//\r",
+									"\r",
+									"registrationRequest(() =>{\r",
+									"  setTimeout(() =>{\r",
+									"    createArticle(() => {\r",
+									"      setTimeout(() => {\r",
+									"        setTimeout(createComment, 7000);\r",
+									"      });\r",
+									"    }, 7000)\r",
+									"  }, 7000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									" \r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(204); \r",
+									"    console.log(\"✅ Status code test executed from global function\");\r",
+									"} else {\r",
+									"    console.error(\"❌ checkStatusCodeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused global response time test\");\r",
+									"} else {\r",
+									"  console.error(\"❌ checkResponseTimeFn not found in globals\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}/comments/{{id}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}",
+								"comments",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a comment of another user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//=====Registration====//\r",
+									"\r",
+									"const fn = pm.collectionVariables.get(\"registrationRequestFn\");\r",
+									"if (fn) {\r",
+									"  eval(`var registrationRequest = ${fn}`);\r",
+									"  console.log(\"✅ registrationRequest loaded from collection\");\r",
+									"}\r",
+									"\r",
+									"registrationRequest(() => {\r",
+									"  console.log(\"Registration completed — now I can continue.\");\r",
+									"});\r",
+									"\r",
+									"//=====Registration Second User====//\r",
+									"\r",
+									"const regSecondFn = pm.collectionVariables.get(\"registrationRequestSecondFn\");\r",
+									"if (regSecondFn) {\r",
+									"  eval(`var registrationRequestSecond = ${regSecondFn}`);\r",
+									"  console.log(\"✅ registrationRequestSecond loaded from collection\");\r",
+									"}\r",
+									"\r",
+									"//=====Create Article by second user====//\r",
+									"\r",
+									"\r",
+									"const createArticleSecondUserfn = pm.collectionVariables.get(\"createArticleSecondUserFn\");\r",
+									"if (createArticleSecondUserfn) {\r",
+									"  eval(`var createArticleSecondUser = ${createArticleSecondUserfn}`);\r",
+									"  console.log(\"createArticleSecondUser loaded from collection\");\r",
+									"\r",
+									"\r",
+									"//=====Create Comment====//\r",
+									"\r",
+									"  const createCommentfn = pm.collectionVariables.get(\"createCommentFn\");\r",
+									"  if (createCommentfn) {\r",
+									"    eval(`var createComment = ${createCommentfn}`);\r",
+									"    console.log(\"createComment loaded from globals\");\r",
+									"  }\r",
+									"\r",
+									"//=====set Timeout====//\r",
+									"\r",
+									"registrationRequestSecond(() => {\r",
+									"      setTimeout(() => {\r",
+									"        createArticleSecondUser(() => {\r",
+									"          setTimeout(createComment, 3000);\r",
+									"        });\r",
+									"      }, 3000);\r",
+									"    });\r",
+									"  \r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(403); \r",
+									"}\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"  pm.expect(pm.response.text()).to.include(\"Forbidden\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(600); \r",
+									"  console.log(\" Response time test\");\r",
+									"\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{tokenSecond}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}/comments/{{id}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}",
+								"comments",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a comment without authorization",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//====Create Article===//\r",
+									"\r",
+									"const createArticlefn = pm.collectionVariables.get(\"createArticleFn\");\r",
+									"if (createArticlefn) {\r",
+									"  eval(`var createArticle = ${createArticlefn}`);\r",
+									"  console.log(\"createArticle loaded from globals\");\r",
+									"\r",
+									"}\r",
+									"\r",
+									"//====Create Comment===//\r",
+									"\r",
+									"const createCommentfn = pm.collectionVariables.get(\"createCommentFn\");\r",
+									"if (createCommentfn) {\r",
+									"  eval(`var createComment = ${createCommentfn}`);\r",
+									"  console.log(\"createComment loaded from globals\");\r",
+									"}\r",
+									"\r",
+									"//====Set Timeout===//\r",
+									"\r",
+									"createArticle(() => {\r",
+									"  setTimeout(createComment, 2000);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const fn = pm.collectionVariables.get(\"checkStatusCodeFn\");\r",
+									"\r",
+									"if (fn) {\r",
+									"    eval(`var checkStatusCode = ${fn}`);\r",
+									"    checkStatusCode(401); \r",
+									"    console.log(\"✅ Status code test executed from collection\");\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"  pm.expect(pm.response.text()).to.include(\"Unauthorized\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"const responseTimeFn = pm.collectionVariables.get(\"checkResponseTimeFn\");\r",
+									"\r",
+									"if (responseTimeFn) {\r",
+									"  eval(`var checkResponseTime = ${responseTimeFn}`);\r",
+									"  checkResponseTime(500); \r",
+									"  console.log(\"Reused collection response time test\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{tokenSecond}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}articles/{{article_slug}}/comments/{{id}}",
+							"host": [
+								"{{BASE_URL}}articles"
+							],
+							"path": [
+								"{{article_slug}}",
+								"comments",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							"\r",
+							"\r",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"//====Registration====//\r",
+					"\r",
+					"function registrationRequest(callback) {\r",
+					"  const BASE_URL = pm.collectionVariables.get('BASE_URL');\r",
+					"  const password = pm.collectionVariables.get('passwordConduit');\r",
+					"  const url = `${BASE_URL}users`;\r",
+					"\r",
+					"  console.log(\"Sign up initialized\")\r",
+					"  const email = `testuser_${Math.floor(Math.random() * 100000)}@gmail.com`;\r",
+					"  const username = `onlyqa_${Math.random().toString(36).substring(2, 10)}`;\r",
+					"  \r",
+					"  pm.collectionVariables.set('email', email);\r",
+					"  pm.collectionVariables.set('username', username);\r",
+					"\r",
+					"\r",
+					"  const requestStructure = {\r",
+					"    url,\r",
+					"    method: 'POST',\r",
+					"    header: [{ key: 'Content-Type', value: 'application/json' }],\r",
+					"    body: {\r",
+					"      mode: 'raw',\r",
+					"      raw: JSON.stringify({ user: { email, username, password } })\r",
+					"    }\r",
+					"  };\r",
+					"\r",
+					"  pm.sendRequest(requestStructure, (error, response) => {\r",
+					"    if (error) return console.error(\"Registration error:\", error);\r",
+					"\r",
+					"    try {\r",
+					"      const resJson = response.json();\r",
+					"      if (resJson.user && resJson.user.token) {\r",
+					"        pm.collectionVariables.set('token', resJson.user.token);\r",
+					"        console.log(\"Token saved:\", resJson.user.token);\r",
+					"        if (callback) callback();\r",
+					"      } else {\r",
+					"        console.warn(\"No token found in response!\");\r",
+					"      }\r",
+					"    } catch (err) {\r",
+					"      console.error(\"Registration parse error:\", err.message, response.text());\r",
+					"    }\r",
+					"  });\r",
+					"}\r",
+					"\r",
+					"pm.collectionVariables.set(\"registrationRequestFn\", registrationRequest.toString());\r",
+					"\r",
+					"//=====Create Article====//\r",
+					"\r",
+					"function createArticle(callback) {\r",
+					"  const BASE_URL = pm.collectionVariables.get('BASE_URL');\r",
+					"  const password = pm.collectionVariables.get('passwordConduit');\r",
+					"  const url = `${BASE_URL}articles`;\r",
+					"  const token = pm.collectionVariables.get('token');\r",
+					"\r",
+					"  const title = `Article ${Math.floor(Math.random() * 100)}`;\r",
+					"  const description = `Description ${Math.floor(Math.random() * 100)}`;\r",
+					"  const body = `Random body ${Math.floor(Math.random() * 1000)}`;\r",
+					"  const tagList = [];\r",
+					"\r",
+					"  const requestStructure = {\r",
+					"    url,\r",
+					"    method: 'POST',\r",
+					"    header: [\r",
+					"      { key: 'Content-Type', value: 'application/json' },\r",
+					"      { key: 'Authorization', value: `Token ${token}` }\r",
+					"    ],\r",
+					"    body: { mode: 'raw', raw: JSON.stringify({ article: { title, description, body, tagList } }) }\r",
+					"  };\r",
+					"\r",
+					"  pm.sendRequest(requestStructure, (error, response) => {\r",
+					"    if (error) return console.error(\"createArticle error:\", error);\r",
+					"\r",
+					"    const resJson = response.json();\r",
+					"    if (resJson.article && resJson.article.slug) {\r",
+					"      pm.collectionVariables.set(\"article_slug\", resJson.article.slug);\r",
+					"      console.log(\"✅ Article created:\", resJson.article.slug);\r",
+					"      if (callback) callback();\r",
+					"    } else {\r",
+					"      console.warn(\"Article not created:\", resJson);\r",
+					"    }\r",
+					"  });\r",
+					"}\r",
+					"\r",
+					"//  Save article to collection\r",
+					"\r",
+					"pm.collectionVariables.set(\"createArticleFn\", createArticle.toString());\r",
+					"console.log(\"createArticle function saved to collection successfully\");\r",
+					"\r",
+					"\r",
+					"//====Registration Second User====//\r",
+					"\r",
+					"function registrationRequestSecond(callback) {\r",
+					"  const BASE_URL = pm.collectionVariables.get('BASE_URL');\r",
+					"  const password = pm.collectionVariables.get('passwordConduit');\r",
+					"  const url = `${BASE_URL}users`;\r",
+					"\r",
+					"  const email = `testuserSecond_${Math.floor(Math.random() * 100000)}@gmail.com`;\r",
+					"  const username = `onlyqa_${Math.random().toString(36).substring(2, 10)}`;\r",
+					"\r",
+					"  const requestStructure = {\r",
+					"    url,\r",
+					"    method: 'POST',\r",
+					"    header: [{ key: 'Content-Type', value: 'application/json' }],\r",
+					"    body: {\r",
+					"      mode: 'raw',\r",
+					"      raw: JSON.stringify({ user: { email, username, password } })\r",
+					"    }\r",
+					"  };\r",
+					"\r",
+					"  pm.collectionVariables.set('emailSecond', email);\r",
+					"  pm.collectionVariables.set('usernameSecond', username);\r",
+					"\r",
+					"  pm.sendRequest(requestStructure, (error, response) => {\r",
+					"    if (error) {\r",
+					"      console.error(\"Sign-up Second error:\", error);\r",
+					"      return;\r",
+					"    }\r",
+					"\r",
+					"    try {\r",
+					"      const resJson = response.json();\r",
+					"      if (resJson.user && resJson.user.token) {\r",
+					"        pm.collectionVariables.set('tokenSecond', resJson.user.token);\r",
+					"        console.log(\" Token (Second user) saved:\", resJson.user.token);\r",
+					"        if (callback) callback();\r",
+					"      } else {\r",
+					"        console.warn(\" No token found in Sign-up Second response:\", resJson);\r",
+					"      }\r",
+					"    } catch (err) {\r",
+					"      console.error(\"❌ Parse error in Sign-up Second:\", err.message, response.text());\r",
+					"    }\r",
+					"  });\r",
+					"}\r",
+					"\r",
+					"// Save user to collection\r",
+					"\r",
+					"console.log(\"Token used for article:\", pm.collectionVariables.get('token'));\r",
+					"pm.collectionVariables.set(\"registrationRequestSecondFn\", registrationRequestSecond.toString());\r",
+					"console.log(\"✅ registrationRequestSecondFn saved to collection\");\r",
+					"\r",
+					"\r",
+					"//=====Create Comment=====//\r",
+					"\r",
+					"function createComment() {\r",
+					"  const BASE_URL = pm.collectionVariables.get('BASE_URL');\r",
+					"  const token = pm.collectionVariables.get('token');\r",
+					"  const article_slug = pm.collectionVariables.get('article_slug');\r",
+					"  const url = `${BASE_URL}articles/${article_slug}/comments`;\r",
+					"\r",
+					"  const body = `MyComment ${Math.floor(Math.random() * 100)}`;\r",
+					"  pm.collectionVariables.set(\"commentBody\", body);\r",
+					"\r",
+					"  const requestStructure = {\r",
+					"    url,\r",
+					"    method: 'POST',\r",
+					"    header: [\r",
+					"      { key: 'Content-Type', value: 'application/json' },\r",
+					"      { key: 'Authorization', value: `Token ${token}` }\r",
+					"    ],\r",
+					"    body: {\r",
+					"      mode: 'raw',\r",
+					"      raw: JSON.stringify({ comment: { body } })\r",
+					"    }\r",
+					"  };\r",
+					"\r",
+					"  pm.sendRequest(requestStructure, (error, response) => {\r",
+					"    if (error) {\r",
+					"      console.error(\"createComment error:\", error);\r",
+					"      return;\r",
+					"    }\r",
+					"\r",
+					"    try {\r",
+					"      const resJson = response.json();\r",
+					"      if (resJson.comment && resJson.comment.id) {\r",
+					"        const commentId = resJson.comment.id;\r",
+					"        pm.collectionVariables.set(\"id\", commentId);\r",
+					"        console.log(`Comment created successfully (ID: ${commentId})`);\r",
+					"      } else {\r",
+					"        console.warn(\"Comment not found in response:\", resJson);\r",
+					"      }\r",
+					"    } catch (err) {\r",
+					"      console.error(\"createComment parse error:\", err.message, response.text());\r",
+					"    }\r",
+					"  });\r",
+					"}\r",
+					"\r",
+					"\r",
+					"pm.collectionVariables.set(\"createCommentFn\", createComment.toString());\r",
+					"console.log(\"✅ createCommentFn saved to collection\");\r",
+					"\r",
+					"\r",
+					"//==== Follow Second User by First ====//\r",
+					"\r",
+					"function followSecondUser(callback) {\r",
+					"  const BASE_URL = pm.collectionVariables.get(\"BASE_URL\");\r",
+					"  const tokenFirst = pm.collectionVariables.get(\"token\");\r",
+					"  const usernameSecond = pm.collectionVariables.get(\"usernameSecond\");\r",
+					"  const url = `${BASE_URL}profiles/${usernameSecond}/follow`;\r",
+					"\r",
+					"  pm.sendRequest({\r",
+					"    url,\r",
+					"    method: 'POST',\r",
+					"    header: [\r",
+					"      { key: 'Content-Type', value: 'application/json' },\r",
+					"      { key: 'Authorization', value: `Token ${tokenFirst}` }\r",
+					"    ]\r",
+					"  }, (err, res) => {\r",
+					"    if (err) return console.error(\"Follow request error:\", err);\r",
+					"\r",
+					"    const resJson = res.json();\r",
+					"    if (resJson.profile && resJson.profile.following === true) {\r",
+					"      console.log(` ${resJson.profile.username} followed by First User`);\r",
+					"    } else {\r",
+					"      console.warn(\" Follow failed:\", resJson);\r",
+					"    }\r",
+					"    if (callback) callback();\r",
+					"  });\r",
+					"}\r",
+					"\r",
+					"pm.collectionVariables.set(\"followSecondUserFn\", followSecondUser.toString());\r",
+					"console.log(\"✅ Follow Second User saved to collection\");\r",
+					"\r",
+					"\r",
+					"\r",
+					"//==== Create Article by Second User ====//\r",
+					"\r",
+					"function createArticleSecondUser(callback) {\r",
+					"  const BASE_URL = pm.collectionVariables.get(\"BASE_URL\");\r",
+					"  const token = pm.collectionVariables.get('tokenSecond');\r",
+					"  const url = `${BASE_URL}articles`;\r",
+					"\r",
+					"  console.log(\"Using Second token:\", token);\r",
+					"\r",
+					"  const title = `Article ${Math.floor(Math.random() * 100)}`;\r",
+					"  const description = `Description ${Math.floor(Math.random() * 100)}`;\r",
+					"  const body = `Random body ${Math.floor(Math.random() * 1000)}`;\r",
+					"  const tagList = [];\r",
+					"\r",
+					"  pm.collectionVariables.set(\"article_title\", title);\r",
+					"  pm.collectionVariables.set(\"article_description\", description);\r",
+					"  pm.collectionVariables.set(\"article_body\", body);\r",
+					"\r",
+					"  const requestStructure = {\r",
+					"    url,\r",
+					"    method: 'POST',\r",
+					"    header: [\r",
+					"      { key: 'Content-Type', value: 'application/json' },\r",
+					"      { key: 'Authorization', value: `Token ${token}` }\r",
+					"    ],\r",
+					"    body: {\r",
+					"      mode: 'raw',\r",
+					"      raw: JSON.stringify({ article: { title, description, body, tagList } })\r",
+					"    }\r",
+					"  };\r",
+					"\r",
+					"  pm.sendRequest(requestStructure, (error, response) => {\r",
+					"    if (error) return console.error(\"createArticle error:\", error);\r",
+					"\r",
+					"    const resJson = response.json();\r",
+					"    if (resJson.article && resJson.article.slug) {\r",
+					"      pm.collectionVariables.set(\"article_slug\", resJson.article.slug);\r",
+					"      console.log(\"✅ Article created:\", resJson.article.slug);\r",
+					"      if (callback) callback();\r",
+					"    } else {\r",
+					"      console.warn(\" Article not created correctly:\", resJson);\r",
+					"    }\r",
+					"  });\r",
+					"}\r",
+					"pm.collectionVariables.set(\"createArticleSecondUserFn\", createArticleSecondUser.toString());\r",
+					"console.log(\"✅ Create Article by Second User saved to collection\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"function checkStatusCode(expectedStatus) {\r",
+					"    pm.test(`Status code is ${expectedStatus}`, function () {\r",
+					"        pm.response.to.have.status(expectedStatus);\r",
+					"    });\r",
+					"}\r",
+					"\r",
+					"pm.collectionVariables.set(\"checkStatusCodeFn\", checkStatusCode.toString());\r",
+					"console.log(\"✅ checkStatusCodeFn saved to collection\");\r",
+					"\r",
+					"\r",
+					"function checkResponseTime(responseTime) {\r",
+					"    pm.test(\"Response time is less than 200ms\", function () {\r",
+					"    pm.expect(pm.response.responseTime).to.be.below(responseTime);\r",
+					"  });\r",
+					"}\r",
+					"\r",
+					"pm.collectionVariables.set(\"checkResponseTimeFn\", checkResponseTime.toString());\r",
+					"\r",
+					"\r",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "https://conduit.mate.academy/api/"
+		},
+		{
+			"key": "passwordConduit",
+			"value": "Pass3408!Aa"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "randomUserName",
+			"value": ""
+		},
+		{
+			"key": "randomUserName_1",
+			"value": ""
+		},
+		{
+			"value": ""
+		},
+		{
+			"key": "article_title",
+			"value": ""
+		},
+		{
+			"key": "article_description",
+			"value": ""
+		},
+		{
+			"key": "article_body",
+			"value": ""
+		},
+		{
+			"key": "article_slug",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "emailFirst",
+			"value": ""
+		},
+		{
+			"key": "usernameFirst",
+			"value": ""
+		},
+		{
+			"key": "emailSecond",
+			"value": ""
+		},
+		{
+			"key": "usernameSecond",
+			"value": ""
+		},
+		{
+			"key": "tokenSecond",
+			"value": ""
+		},
+		{
+			"key": "tokenFirst",
+			"value": ""
+		},
+		{
+			"key": "article_tag",
+			"value": ""
+		},
+		{
+			"key": "commentBody",
+			"value": ""
+		},
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "registrationRequestFn",
+			"value": ""
+		},
+		{
+			"key": "checkStatusCodeFn",
+			"value": ""
+		},
+		{
+			"key": "checkResponseTimeFn",
+			"value": ""
+		},
+		{
+			"key": "createArticleFn",
+			"value": ""
+		},
+		{
+			"key": "registrationRequestSecondFn",
+			"value": ""
+		},
+		{
+			"key": "createCommentFn",
+			"value": ""
+		},
+		{
+			"key": "FollowSecondUserFn",
+			"value": ""
+		},
+		{
+			"key": "followSecondUserFn",
+			"value": ""
+		},
+		{
+			"key": "createArticleSecondUserFn",
+			"value": ""
+		}
+	]
+}

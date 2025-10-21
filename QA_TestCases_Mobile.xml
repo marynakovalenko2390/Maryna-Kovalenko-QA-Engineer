@@ -1,0 +1,2338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+	<id>S2</id>
+	<name>Master</name>
+	<description></description>
+	<sections>
+		<section>
+		<name>User not logged in</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>Main page</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C389</id>
+				<title>The main page contain  ‘Sign in to your account&apos; form</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C390</id>
+				<title>The main page contains the ‘Sign Up&quot; link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C391</id>
+				<title>The main page contains the &quot;Sign Up with Google&quot; link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>‘Sign in to your account&apos; form</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C392</id>
+				<title>The &quot;Sign In&quot; form should contain the &quot;Email&quot; required field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C393</id>
+				<title>The &quot;Sign In&quot; form should contain the &quot;Password&quot; required field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C394</id>
+				<title>The &quot;Sign In&quot; form should contain [Sign In] button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C395</id>
+				<title>The &quot;Sign In&quot; form should contain &quot;Forgot password&quot; link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C396</id>
+				<title>The user can sign in to filling all required fields</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C397</id>
+				<title>The user can sign in with already registered credentials</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>“Email” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C398</id>
+				<title>The user can sign in by entering in the &quot;Email&quot; field already registered email</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C400</id>
+				<title>The user can&apos;t Sign In without the dot symbol (.) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C401</id>
+				<title>The user can&apos;t Sign In without the At symbol (@) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C402</id>
+				<title>When the user enters an invalid email in the &quot;Email&quot; field, the validation message appears</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C403</id>
+				<title>The user can&apos;t Sign In without the username before the &apos;at&quot; symbol in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C404</id>
+				<title>The user can&apos;t sign in without the domain in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C405</id>
+				<title>The user can&apos;t Sign in with multiple @ symbols in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C406</id>
+				<title>The user can&apos;t sign in with an empty &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C408</id>
+				<title>The user can&apos;t sign in with a SQL/script injection attempt in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C409</id>
+				<title>The user can&apos;t sign in with long email (64+ characters before @) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C410</id>
+				<title>The user can&apos;t sign in with a long domain (over 254 total characters) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Password” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C411</id>
+				<title>The user can sign in by entering in the &quot;Password&quot; field already registered password</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C412</id>
+				<title>The user can sign in by entering at least one uppercase letter in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C413</id>
+				<title>The user can sign in by entering at least one lowercase letter in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C414</id>
+				<title>The user can sign in by entering at least one number in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C415</id>
+				<title>The user can sign in by entering at least one special character in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C416</id>
+				<title>When the user enters an invalid password in the &quot;Password&quot; field, the validation message appears:&quot; Wrong email or password!&quot;</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C417</id>
+				<title>The user can&apos;t sign in with empty &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C418</id>
+				<title>The user can&apos;t sign in by entering only letters in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C419</id>
+				<title>The user can&apos;t sign in by entering only numbers in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C420</id>
+				<title>The user can&apos;t sign in by entering only special symbols in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C543</id>
+				<title>The user can&apos;t sign in by entering only special symbols in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C544</id>
+				<title>Verify that the user is not able to copy values from the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>[Sign in] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C421</id>
+				<title>When the users enter all valid credentials and tap on the [Sign In] button, they are redirected to the &quot;Chat&quot; page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Forgot password” link</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C422</id>
+				<title>When users click on the &quot;Forgot password &quot; link, they are redirected to the &quot;Forgot password&quot; page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Sign up” link</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C423</id>
+				<title>When not logged in users click on &quot;Sign up&quot; link, they are redirected to &quot; Create an account &quot; form</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>Sign Up</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>Create an account page</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C424</id>
+				<title>The &quot; Create an account&quot; form should contain the &quot;Email&quot; required field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C425</id>
+				<title>The &quot; Create an account &quot; form should contain the &quot;Password&quot; required field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C426</id>
+				<title>The &quot; Create an account&quot; form should contain the &quot;Repeat password&quot; required field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C427</id>
+				<title>The &quot; Create an account form &quot; form should contain a &quot;Sign Up via Google&quot; link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C428</id>
+				<title>The &quot; Create an account form &quot; form should contain [Create an account] button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>“Email” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C429</id>
+				<title>The users can sign up with valid email credentials</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C430</id>
+				<title>The user can&apos;t sign up without the dot symbol (.) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C431</id>
+				<title>The user can&apos;t sign up without the At symbol (@) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C432</id>
+				<title>When the user enters an invalid email in the &quot;Email&quot; field, the validation message appears</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C433</id>
+				<title>The user can&apos;t sign up without the username before the &apos;at&quot; symbol in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C434</id>
+				<title>The user can sign up with the subdomain in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C435</id>
+				<title>The user can&apos;t sign up without the domain in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C436</id>
+				<title>The user can&apos;t sign up with multiple @ symbols in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C437</id>
+				<title>The user can&apos;t sign up with an empty &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C438</id>
+				<title>The user can&apos;t sign up with unsupported symbols in the &quot;Email&quot; field (&quot;!&quot;, &quot;^&quot;, &quot;$&quot;, &quot;%&quot;)</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C440</id>
+				<title>The user can&apos;t sign up with a SQL/script injection attempt in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C441</id>
+				<title>The user can&apos;t sign up with a long email (64+ characters before @) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C442</id>
+				<title>The user can&apos;t sign up with a long domain (over 254 total characters) in the &quot;Email&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Password” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C443</id>
+				<title>The user can sign up by entering at least one uppercase letter in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C444</id>
+				<title>The user can sign  up by entering at least one lowercase letter in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C445</id>
+				<title>The user can sign  up by entering at least one number in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C446</id>
+				<title>The user can sign up by entering at least one special character in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C447</id>
+				<title>When the user enters an invalid password in the &quot;Password&quot; field, the validation message appears:&quot; Wrong email or password!&quot;</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C448</id>
+				<title>The user can&apos;t sign  up with an empty &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C449</id>
+				<title>The user can&apos;t sign up by entering only letters in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C450</id>
+				<title>The user can&apos;t sign  up by entering only numbers in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C451</id>
+				<title>The user can&apos;t sign  up by entering only special symbols in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C570</id>
+				<title>The user can&apos;t sign up by entering only one character in the &quot;Password&quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C574</id>
+				<title>The users can sign up with valid password credentials</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Sign up with Google” link</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C452</id>
+				<title>When the user taps on sign up via the &quot;Google&quot; icon, the Google &quot;OAuth Authorization&quot; page is opened</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>[Create account] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C453</id>
+				<title>When the user taps on the [Create account] button, they redirect to the &quot;My Chat&quot; page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+			<section>
+		<name>User logged in as a candidate</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>Maine page</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>Chat</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>Chat page</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C520</id>
+				<title>The &quot;Chat&quot; page contain  [All] button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C521</id>
+				<title>The &quot;Chat&quot; page contains the [Archive] button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C522</id>
+				<title>The &quot;Chat&quot; page contains the Chat messages area</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C572</id>
+				<title>Before contacting the candidate in the chat, the recruiter shouldn’t be able to see the contacts of the candidate</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C573</id>
+				<title>The candidate should be able to open their contacts or decline the recruiter’s proposition and not share contact details</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>[All] button</name>
+		<description></description>
+									</section>
+			<section>
+		<name>[Archive] button</name>
+		<description></description>
+									</section>
+			<section>
+		<name>Chat messages area</name>
+		<description></description>
+									</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+			<section>
+		<name>Profile</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C523</id>
+				<title>The &quot;Profile&quot; page contain  “Profile” link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C524</id>
+				<title>The &quot;Profile&quot; page contain  “Contact” link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C528</id>
+				<title>The &quot;Profile&quot; page contain a “Preferences” link&quot;</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>“Profile” link</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C525</id>
+				<title>When user taps on  “Profile” link, they redirected to &quot; Preview profile&quot; page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>Preview profile</name>
+		<description></description>
+									</section>
+			<section>
+		<name>[Edit profile] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C575</id>
+				<title>“Preview profile” page contain [Edit] button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>“Contact” link</name>
+		<description></description>
+									</section>
+			<section>
+		<name>“Preferences” link</name>
+		<description></description>
+									</section>
+			<section>
+		<name>[Sign out] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C533</id>
+				<title>When user taps on [Sign out] button, they redirected to &quot;Sign in&quot; page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Candidate profile” dropdown</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C529</id>
+				<title>User able to choose recruiter profile by taps on  “Candidate profile” dropdown</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>Candidate profile</name>
+		<description></description>
+									</section>
+			<section>
+		<name>Recruiter profile</name>
+		<description></description>
+									</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+			<section>
+		<name>Sign Up</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>[ Candidate] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C454</id>
+				<title>When user sign up as a candidate, they tap on &quot;Candidate&quot; button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C455</id>
+				<title>When the user taps on the &quot;Candidate&quot; button, they are redirected to &quot;Profile information&quot; page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>Profile information</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>&quot;Role&quot; stage</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C456</id>
+				<title>The  &quot;Role&quot; stage contain  required “Desired position” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C457</id>
+				<title>The  &quot;Role&quot; stage contain  required “Select specialization” dropdown</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C458</id>
+				<title>The  &quot;Role&quot; stage contains required “Type and select strongest tech skills” dropdown</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>&quot;Desired position&apos; field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C459</id>
+				<title>The “Desired position” field should accept valid position text</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C460</id>
+				<title>The “Desired position” field should not accept a minimum length of 1 character</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C461</id>
+				<title>The “Desired position” field should not accept  only numbers</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C462</id>
+				<title>The “Desired position” field should not accept  special characters only</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C463</id>
+				<title>The “Desired position” field should not accept  special characters only</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C464</id>
+				<title>The “Desired position” field should be an empty field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>[Save and continue] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C465</id>
+				<title>When the user taps on the [Save and continue] button, they are redirected to the &quot; Expectation&quot; stage</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>&quot;Expectation&quot; stage</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C471</id>
+				<title>&quot;Expectation&quot; stage should contain &quot; Desired base salary, $ &quot; field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C472</id>
+				<title>&quot;Expectation&quot; stage should contain  [Annual] button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C473</id>
+				<title>&quot;Expectation&quot; stage should contain   [Monthly] button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C474</id>
+				<title>&quot;Expectation&quot; stage should contain   “Select work experience” dropdown</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C476</id>
+				<title>&quot;Expectation&quot; stage should contain  “Select English level” dropdown</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C477</id>
+				<title>&quot;Expectation&quot; stage should contain  “Select your location&quot; dropdown</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>Desired base salary, $</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C466</id>
+				<title>The &quot; Desired base salary, $&quot; field should accept numerical characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C467</id>
+				<title>The &quot;Desired base salary, $&quot; field should not accept alphabetical characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C468</id>
+				<title>The &quot;Desired base salary, $&quot; field should not accept contain special symbols</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C469</id>
+				<title>The &quot;Desired base salary, $&quot; field should not be empty</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C470</id>
+				<title>The &quot;Desired base salary, $&quot; field should not accept a negative values</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>[Save and continue] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C478</id>
+				<title>When the user taps on the [Save and continue] button, they are redirected to the &quot; Experience&quot; stage</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>&quot;Experience&quot; stage</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C479</id>
+				<title>&quot;Experience&quot; stage should contain required “Achievement” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C480</id>
+				<title>&quot;Experience&quot; stage should contain required “Work experience” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C481</id>
+				<title>&quot;Experience&quot; stage should contain optional  “Job expectation” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>“Achievement” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C482</id>
+				<title>The “Achievements” field should accept alphanumeric characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C485</id>
+				<title>The “Achievements” field should accept at least 2 characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Work experience” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C486</id>
+				<title>The  “Work experience” field should accept alphanumeric characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C489</id>
+				<title>The “Work experience” field should accept at least 2 characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Job expectation” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C490</id>
+				<title>The  “Job expectation” field should accept alphanumeric characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C493</id>
+				<title>The “Job expectation” field should accept at least 2 characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>[Save and continue] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C494</id>
+				<title>When the user taps on the [Save and continue] button, they are redirected to the  “Contact information” page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+			<section>
+		<name>“Contact information” page</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C495</id>
+				<title>The  “Contact information” page should contain  “First name” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C496</id>
+				<title>The  “Contact information” page should contain  “Last name” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C497</id>
+				<title>The  “Contact information” page should contain   “LinkedIn” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C498</id>
+				<title>The  “Contact information” page should contain   “Behance” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C499</id>
+				<title>The  “Contact information” page should contain  “GitHub ” field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>“First name” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C500</id>
+				<title>The “First name” field should accept a valid user&apos;s name input</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C501</id>
+				<title>The “First name” field should not be empty</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C502</id>
+				<title>The “First name” field should accept at least 2 characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C503</id>
+				<title>The “First name” field should not accept only numbers</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C504</id>
+				<title>The “First name” field should not accept only special symbols</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Last name” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C505</id>
+				<title>The “Last name” field should accept a valid user&apos;s name input</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C506</id>
+				<title>The  “Last name” field should not be empty</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C507</id>
+				<title>The  “Last name” field should accept at least 2 characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C508</id>
+				<title>The  “Last name” field should not accept only numbers</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C509</id>
+				<title>The “Last name” field should not accept only special symbols</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“LinkedIn” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C510</id>
+				<title>The “ LinkedIn ” URL field should accept a valid LinkedIn profile URL</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C515</id>
+				<title>The “ LinkedIn ” URL field should not accept non-LinkedIn URL</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Behance” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C511</id>
+				<title>The “Behance” URL field should accept a valid Behance profile URL</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C514</id>
+				<title>The “Behance” field URL field should not accept a non-Behance URL</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“GitHub ” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C512</id>
+				<title>The “GitHub ” URL field should accept a valid GitHub profile URL</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C513</id>
+				<title>The “GitHub ” URL field should not accept a non-GitHub URL</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>[Save and continue] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C516</id>
+				<title>When the user taps on the [Save and continue] button, they are redirected to the  “Preview profile” page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+			<section>
+		<name>[ Recruiter] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C519</id>
+				<title>When user sign up as a recruiter, they tap on &quot;Recruiter&quot; button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>&quot;Sign out&quot; link</name>
+		<description></description>
+									</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+			<section>
+		<name>User logged in as a recruiter</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>Chat</name>
+		<description></description>
+									</section>
+			<section>
+		<name>Profile</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C530</id>
+				<title>The &quot;Profile&quot; page contain  “Profile” link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C531</id>
+				<title>The &quot;Profile&quot; page contain  “Contact” link</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C532</id>
+				<title>The &quot;Profile&quot; page contain a “Preferences” link&quot;</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>“Profile” link</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>Preview profile</name>
+		<description></description>
+									</section>
+	</sections>
+			</section>
+			<section>
+		<name>“Contact” link</name>
+		<description></description>
+									</section>
+			<section>
+		<name>“Preferences” link</name>
+		<description></description>
+									</section>
+			<section>
+		<name>[Sign out] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C534</id>
+				<title>When user taps on [Sign out] button, they redirected to &quot;Sign in&quot; page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Recruiter profile” dropdown</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C535</id>
+				<title>User is able to choose a candidate profile by tapping on the “Recruiter profile” dropdown</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>Candidate profile</name>
+		<description></description>
+									</section>
+			<section>
+		<name>Recruiter profile</name>
+		<description></description>
+									</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+			<section>
+		<name>“Preview profile” page</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>[Deactivate profile] button</name>
+		<description></description>
+									</section>
+			<section>
+		<name>[Edit] button</name>
+		<description></description>
+									</section>
+	</sections>
+			</section>
+			<section>
+		<name>Sign Up</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>[ Recruiter] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C536</id>
+				<title>When user sign up as a recruiter, they tap on &quot;Recruiter&quot; button</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>“My role” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C537</id>
+				<title>The “My role” field should accept valid position text</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C538</id>
+				<title>The “My role” field should not accept a minimum length of 1 character</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C539</id>
+				<title>The “My role” field should not accept  only numbers</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C541</id>
+				<title>The “My role” field should not accept  special characters only</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C542</id>
+				<title>The “My role” field should be an empty field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C545</id>
+				<title>The “My role” field is a required field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C571</id>
+				<title>When the user inputs invalid credentials in the “My Role” field, a validation message appears</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>“Company” field</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C546</id>
+				<title>The “Company name” field should accept valid text</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C547</id>
+				<title>The “Company name” field should accept at least 2 characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C548</id>
+				<title>The “Company name” field should accept alphanumeric characters</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C549</id>
+				<title>The “Company name” field should accept special characters like (&amp;, -, .)</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C550</id>
+				<title>The “Company name” field should not be an empty field</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C551</id>
+				<title>The “Company name” field should not accept only numbers</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C552</id>
+				<title>The “Company name” field should not accept invalid symbols</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+															<case>
+				<id>C553</id>
+				<title>When the user input invalid credential in the “Company name” field, validation message is appeared</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>[Save and continue] button</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C554</id>
+				<title>When the user taps on the [Save and continue] button, they are redirected to the  “Preview profile” page</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																												<custom>
+											<automation_type><id>0</id><value> None</value></automation_type>
+									</custom>
+							</case>
+								</cases>
+								<sections>
+		<section>
+		<name>Preview profile page</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>[Activate profile] button</name>
+		<description></description>
+									</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+			</section>
+	</sections>
+</suite>

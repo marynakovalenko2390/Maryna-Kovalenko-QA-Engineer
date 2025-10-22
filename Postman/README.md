@@ -1,44 +1,49 @@
 
-# Postman Collection
+### Postman Collection
 
 This repository contains a Postman collection organized into 5 folders, each representing a group of related API requests.
 
-# Collection-level Scripts
+Collection-level Scripts
+### Pre-request Scripts
 
-# Pre-request scripts: Executed before requests at the collection level. These scripts can be reused by requests as needed.
-Examples include:
+Executed before requests at the collection level. These scripts can be reused by requests as needed.
 
- -User registration pre-request script
+Examples:
+<ls>
 
--Creating an article
+* User registration
 
--Following a user
+* Creating an article
 
--Creating a second user
+* Following a user
 
--Creating comments
+* Creating a second user
 
-# Post-response scripts: Executed after requests at the collection level to validate responses. These scripts can also be called at the request level.
-Examples include:
+* Creating comments
 
--Checking response status code
+### Post-response Scripts
 
--Validating response time
+Executed after requests at the collection level to validate responses. These scripts can also be called at the request level.
 
--Verifying response properties
+Examples:
+<ls>
 
--Request-level Script Usage
+* Checking response status code
 
-Collection-level scripts can be called at the request level whenever needed.
+* Validating response time
 
-This allows for reusable logic across multiple requests without duplicating code.
+* Verifying response properties
 
-# Benefits
+* Request-level Script Usage
 
--Centralized script management (pre-request and post-response scripts)
+Collection-level scripts can be called at the request level whenever needed, allowing for reusable logic across multiple requests without duplicating code.
 
--Reusable scripts for common tasks
+### Benefits
+<ls>
 
--Easy to maintain and extend
+* Centralized script management (pre-request and post-response scripts)
 
+* Reusable scripts for common tasks
+
+* Easy to maintain and extend
 

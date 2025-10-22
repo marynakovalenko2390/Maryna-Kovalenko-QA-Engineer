@@ -34,7 +34,6 @@ Examples:
 
 * Verifying response properties
 
-* Request-level Script Usage
 
 Collection-level scripts can be called at the request level whenever needed, allowing for reusable logic across multiple requests without duplicating code.
 

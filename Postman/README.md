@@ -78,3 +78,5 @@ Collection-level scripts can be called at the request level whenever needed, all
 
 * Easy to maintain and extend
 
+### Link to [Postman Collection](https://www.postman.com/marysiakovalenko2390/workspace/postman-practice-maryna-kovalenko/request/32304064-58ec9055-42e0-43ba-9ff6-6833a110725f?action=share&creator=32304064&ctx=documentation&active-environment=32304064-dafd07f6-56ba-4340-9150-13c81949f749)
+

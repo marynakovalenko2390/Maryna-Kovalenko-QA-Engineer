@@ -13,13 +13,18 @@ Examples:
 
 * User registration ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_uCQr4xN71v.png)
 
+
 * Creating an article ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_Anx0kH41P0.png)
+
 
 * Following a user ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_b4r4Tq2zw7.png)
 
+
 * Creating a second user ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_x027WomRCn.png)
 
+
 * Creating comments ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_jpXJq2a1X5.png)
+
 
 ### Post-response Scripts
 
@@ -28,9 +33,12 @@ Executed after requests at the collection level to validate responses. These scr
 Examples:
 <ls>
 
+
 * Checking response status code ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_kxja3MYSRL.png)
 
+
 * Validating response time ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_OVfjPK9Cr7.png)
+
 
 * Verifying response properties ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_nBJZbaOJJC.png)
 

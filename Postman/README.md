@@ -16,6 +16,8 @@ Examples:
 
 
 * Creating an article 
+
+
 ![screenshot of sample](https://raw.githubusercontent.com/marynakovalenko2390/Maryna-Kovalenko-QA-Engineer/main/Postman/img/Postman_Anx0kH41P0.png)
 
 
